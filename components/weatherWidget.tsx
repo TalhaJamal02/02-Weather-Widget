@@ -113,7 +113,7 @@ export default function WeatherWidget() {
       <Card className="bg-white w-full max-w-md mx-auto text-center border-black shadow-xl">
         <CardHeader>
           <CardTitle className="font-bold text-lg tracking-normal">WEATHER WIDGET</CardTitle>
-          <CardDescription className="abc font-medium tracking-wide">
+          <CardDescription className=" font-medium tracking-wide">
             Find out the current weather in your city.
           </CardDescription>
         </CardHeader>
@@ -126,7 +126,7 @@ export default function WeatherWidget() {
               onChange={(e: ChangeEvent<HTMLInputElement>) => setLocation(e.target.value)}
               className="rounded-xl shadow-lg"
             />
-            <Button type="submit" disabled={isLoading} className="hover:bg-black hover:text-white shadow-lg rounded-3xl">
+            <Button type="submit" disabled={isLoading} className="bg-black text-white hover:bg-gray-600 shadow-lg rounded-3xl">
               {isLoading ? "Loading..." : "Search"}
             </Button>
           </form>
