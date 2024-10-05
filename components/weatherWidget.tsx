@@ -5,6 +5,7 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { CloudIcon, MapPinIcon, ThermometerIcon } from "lucide-react";
 
+// Define WeatherData interface
 interface WeatherData {
   temperature: number;
   description: string;
@@ -59,7 +60,7 @@ function getWeatherMessage(description: string): string {
 function getLocationMessage(location: string): string {
   const currentHour = new Date().getHours();
   const isNight = currentHour >= 18 || currentHour < 6;
-  return ` ${location} ${isNight ? "at Night" : "During the Day"}`;
+  return `${location} ${isNight ? "at Night" : "During the Day"}`;
 }
 
 // Main WeatherWidget component
@@ -108,10 +109,10 @@ export default function WeatherWidget() {
   };
 
   return (
-    <div className=" bg-black flex justify-center items-center h-screen">
-      <Card className=" bg-white w-full max-w-md mx-auto text-center border-black shadow-xl">
+    <div className="bg-black flex justify-center items-center h-screen">
+      <Card className="bg-white w-full max-w-md mx-auto text-center border-black shadow-xl">
         <CardHeader>
-          <CardTitle className="font-bold text-lg tracking-normal ">WEATHER WIDGET</CardTitle>
+          <CardTitle className="font-bold text-lg tracking-normal">WEATHER WIDGET</CardTitle>
           <CardDescription className="abc font-medium tracking-wide">
             Find out the current weather in your city.
           </CardDescription>
@@ -122,8 +123,10 @@ export default function WeatherWidget() {
               type="text"
               placeholder="Enter a city name"
               value={location}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => setLocation(e.target.value)} className=" rounded-xl shadow-lg" />
-            <Button type="submit" disabled={isLoading} className=" hover:bg-black hover:text-white shadow-lg rounded-3xl">
+              onChange={(e: ChangeEvent<HTMLInputElement>) => setLocation(e.target.value)}
+              className="rounded-xl shadow-lg"
+            />
+            <Button type="submit" disabled={isLoading} className="hover:bg-black hover:text-white shadow-lg rounded-3xl">
               {isLoading ? "Loading..." : "Search"}
             </Button>
           </form>
@@ -148,4 +151,4 @@ export default function WeatherWidget() {
       </Card>
     </div>
   );
-};
+}
