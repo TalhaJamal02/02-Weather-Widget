@@ -83,17 +83,15 @@ export default function WeatherWidget() {
     setError(null);
 
     try {
-    const res = await fetch(`https://api.weatherapi.com/v1/current.json?key=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}&q=${trimmedLocation}`);
-    if (!res.ok) {
-    throw new Error(`HTTP error! status: ${res.status}`);
-    }
-    const data = await res.json();
-    // ... handle data
-    } catch (error) {
-    console.error("Error fetching weather data:", error);
-    setError("City not recognized. Please try again.");
-    setWeather(null);
-    }
+      const res = await fetch(
+        `https://api.weatherapi.com/v1/current.json?key=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}&q=${trimmedLocation}`
+      );
+
+      if (!res.ok) {
+        throw new Error("City not recognized");
+      }
+
+      const data = await res.json();
       const weatherData: WeatherData = {
         temperature: data.current.temp_c,
         description: data.current.condition.text,
@@ -102,7 +100,6 @@ export default function WeatherWidget() {
       };
       setWeather(weatherData);
     } catch (error) {
-      console.log("Error fetching weather data:", error);
       setError("City not recognized. Please try again.");
       setWeather(null);
     } finally {
